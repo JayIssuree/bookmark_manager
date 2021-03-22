@@ -6,7 +6,7 @@ require 'simplecov'
 require 'simplecov-console'
 # require_relative './features/web_helpers.rb'
 
-Capybara.app = BookmarksApp
+Capybara.app = BookmarkManager
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
