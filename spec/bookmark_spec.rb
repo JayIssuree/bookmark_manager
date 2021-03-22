@@ -5,6 +5,11 @@ describe Bookmark do
     describe ".all" do
         
         it "returns a hard coded list of bookmarks" do
+            connection = PG.connect(dbname: 'bookmark_manager_test')
+            connection.exec("INSERT INTO bookmarks (name, url) VALUES ('Google', 'https://www.google.com')")
+            connection.exec("INSERT INTO bookmarks (name, url) VALUES ('YouTube', 'https://www.youtube.com')")
+            connection.exec("INSERT INTO bookmarks (name, url) VALUES ('Github', 'https://www.github.com')")
+            
             expect(Bookmark.all.length).to eq(3)
             bookmark1 = Bookmark.all[0]
             bookmark2 = Bookmark.all[1]
