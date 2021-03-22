@@ -20,3 +20,13 @@ The website will have the following **specification**:
 This is the basic view of the website. You will build it by working through the sequence of challenges. As you go on, we will be challenging you to extend the functionality of this website.
 
 ![](https://dchtm6r471mui.cloudfront.net/hackpad.com_jubMxdBrjni_p.52567_1380279073159_Screen%20Shot%202013-09-27%20at%2011.06.12.png "Bookmark Manager")
+
+### To set up the database
+
+Connect to `psql` and create the `bookmark_manager` database:
+
+```
+CREATE DATABASE bookmark_manager;
+```
+
+To set up the appropriate tables, connect to the database in `psql` and run the SQL scripts in the `db/migrations` folder in the given order.
