@@ -1,11 +1,16 @@
+require 'pg'
+
 class Bookmark
 
     def self.all
-        [
-            Bookmark.new(name: "Google", href: "https://www.google.com"),
-            Bookmark.new(name: "YouTube", href: "https://www.youtube.com"),
-            Bookmark.new(name: "Github", href: "https://www.github.com")
-        ]
+        connection = PG.connect(dbname: 'bookmark_manager')
+        result = connection.exec('SELECT * FROM bookmarks')
+        result.map do |bookmark| 
+            Bookmark.new(
+                name: bookmark['name'],
+                href: bookmark['url']
+            )
+        end
     end
 
     attr_reader :name, :href
