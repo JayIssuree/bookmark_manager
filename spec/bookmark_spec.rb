@@ -43,6 +43,30 @@ describe Bookmark do
         end
         
     end
+
+    describe ".find" do
+        
+        it "finds a and returns a bookmark object from its id" do
+            bookmark = Bookmark.create(name: "test", href: "www.testurl.com")
+            returned_bookmark = Bookmark.find(id: bookmark.id)
+            expect(returned_bookmark.id).to eq(bookmark.id)
+            expect(returned_bookmark.name).to eq(bookmark.name)
+            expect(returned_bookmark.href).to eq(bookmark.href)
+        end
+
+    end
+
+    describe ".update" do
+        
+        it "updates the name and href of a bookmark" do
+            bookmark = Bookmark.create(name: "test", href: "www.testurl.com")
+            updated_bookmark = Bookmark.update(id: bookmark.id, name: "updated_test", url: "www.updatedtesturl.com")
+            expect(updated_bookmark.id).to eq(bookmark.id)
+            expect(updated_bookmark.name).to eq("updated_test")
+            expect(updated_bookmark.href).to eq("www.updatedtesturl.com")
+        end
+
+    end
     
     describe "intialize" do
         

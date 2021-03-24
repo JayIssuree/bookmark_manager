@@ -8,7 +8,7 @@ describe "deleting a bookmark", type: :feature do
         expect(page).to have_button("Delete Bookmark")
     end
 
-    it "deltes the bookmark" do
+    it "deletes the bookmark" do
         Bookmark.create(name: "Google", href: "https://www.google.com")
 
         visit '/'
