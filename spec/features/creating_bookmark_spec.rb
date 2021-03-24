@@ -1,4 +1,4 @@
-describe "creating a bookmak", type: :feature do
+describe "creating a bookmark", type: :feature do
     
     it "has a link to the create bookmark page" do
         visit '/'

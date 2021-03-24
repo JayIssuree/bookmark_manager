@@ -33,6 +33,16 @@ describe Bookmark do
         end
 
     end
+
+    describe ".delete" do
+
+        it "deletes the bookmark" do
+            bookmark = Bookmark.create(name: "test", href: "www.testurl.com")
+            expect(Bookmark.all.length).to eq(1)
+            expect{ Bookmark.delete(id: bookmark.id) }.to change{ Bookmark.all.length }.from(1).to(0)
+        end
+        
+    end
     
     describe "intialize" do
         
