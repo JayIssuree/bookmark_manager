@@ -8,7 +8,12 @@ class Bookmark
         else
             connection = PG.connect(dbname: "bookmark_manager")
         end
-        connection.exec("INSERT INTO bookmarks (name, url) VALUES ('#{name}', '#{href}')")
+        result = connection.exec("INSERT INTO bookmarks (name, url) VALUES ('#{name}', '#{href}') RETURNING id, name, url")
+        Bookmark.new(
+            id: result[0]["id"],
+            name: result[0]["name"],
+            href: result[0]["url"]
+        )
     end
 
     def self.all
@@ -20,15 +25,17 @@ class Bookmark
         result = connection.exec("SELECT * FROM bookmarks")
         result.map do |bookmark| 
             Bookmark.new(
+                id: bookmark["id"],
                 name: bookmark["name"],
                 href: bookmark["url"]
             )
         end
     end
 
-    attr_reader :name, :href
+    attr_reader :id, :name, :href
 
-    def initialize(name:, href:)
+    def initialize(id:, name:, href:)
+        @id = id
         @name = name
         @href = href
     end

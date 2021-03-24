@@ -1,46 +1,44 @@
 require 'bookmark'
+require 'database_helpers'
 
 describe Bookmark do
 
     describe ".all" do
         
         it "returns a hard coded list of bookmarks" do
-            connection = PG.connect(dbname: 'bookmark_manager_test')
-            connection.exec("INSERT INTO bookmarks (name, url) VALUES ('Google', 'https://www.google.com')")
-            connection.exec("INSERT INTO bookmarks (name, url) VALUES ('YouTube', 'https://www.youtube.com')")
-            connection.exec("INSERT INTO bookmarks (name, url) VALUES ('Github', 'https://www.github.com')")
-            # Bookmark.create(name: "Google", href: "https://www.google.com")
-            # Bookmark.create(name: "YouTube", href: "https://www.youtube.com")
-            # Bookmark.create(name: "Github", href: "https://www.github.com")
+            bookmark = Bookmark.create(name: "Google", href: "https://www.google.com")
+            Bookmark.create(name: "YouTube", href: "https://www.youtube.com")
+            Bookmark.create(name: "Github", href: "https://www.github.com")
+
+            bookmarks = Bookmark.all
             
-            expect(Bookmark.all.length).to eq(3)
-            bookmark1 = Bookmark.all[0]
-            bookmark2 = Bookmark.all[1]
-            bookmark3 = Bookmark.all[2]
-            expect(bookmark1.name).to eq("Google")
-            expect(bookmark1.href).to eq("https://www.google.com")
-            expect(bookmark2.name).to eq("YouTube")
-            expect(bookmark2.href).to eq("https://www.youtube.com")
-            expect(bookmark3.name).to eq("Github")
-            expect(bookmark3.href).to eq("https://www.github.com")
+            expect(bookmarks.length).to eq(3)
+            expect(bookmarks.first.id).to eq(bookmark.id)
+            expect(bookmarks.first.name).to eq("Google")
+            expect(bookmarks.first.href).to eq("https://www.google.com")
+            expect(bookmarks.first).to be_a(Bookmark)
         end
 
     end
 
     describe ".create" do
         
-        it "creates a bookmark and saves it to the database" do
-            Bookmark.create(name: "test", href: "www.testurl.com")
-            expect(Bookmark.all.first.name).to eq("test")
-            expect(Bookmark.all.first.href).to eq("www.testurl.com")
+        it "creates a bookmark, saves it to the database and returns a bookmark" do
+            bookmark = Bookmark.create(name: "test", href: "www.testurl.com")
+            persisted_data = persisted_data(id: bookmark.id)
+            expect(bookmark.id).to eq(persisted_data["id"])
+            expect(bookmark.name).to eq("test")
+            expect(bookmark.href).to eq("www.testurl.com")
+            expect(bookmark).to be_a(Bookmark)
         end
 
     end
     
     describe "intialize" do
         
-        it "is initialized with a name and href link" do
-            subject = described_class.new(name: "Google", href: "https://www.google.com")
+        it "is initialized with an id, name and href link" do
+            subject = described_class.new(id: 1, name: "Google", href: "https://www.google.com")
+            expect(subject.id).to eq(1)
             expect(subject.name).to eq("Google")
             expect(subject.href).to eq("https://www.google.com")
         end

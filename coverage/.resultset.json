@@ -4,25 +4,19 @@
       "/Users/jayissuree/Desktop/Makers 2021/week4/bookmark_manager/spec/bookmark_spec.rb": {
         "lines": [
           1,
-          null,
           1,
           null,
           1,
           null,
           1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
           null,
           1,
           1,
           1,
           1,
+          null,
           1,
+          null,
           1,
           1,
           1,
@@ -38,6 +32,9 @@
           1,
           1,
           1,
+          1,
+          1,
+          1,
           null,
           null,
           null,
@@ -48,10 +45,22 @@
           1,
           1,
           1,
+          1,
           null,
           null,
           null,
           null,
+          null
+        ]
+      },
+      "/Users/jayissuree/Desktop/Makers 2021/week4/bookmark_manager/spec/database_helpers.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
           null
         ]
       },
@@ -119,6 +128,6 @@
         ]
       }
     },
-    "timestamp": 1616517200
+    "timestamp": 1616577649
   }
 }
