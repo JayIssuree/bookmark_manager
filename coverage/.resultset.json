@@ -37,6 +37,11 @@
           1,
           null,
           null,
+          1,
+          1,
+          1,
+          null,
+          null,
           null,
           null,
           1,
@@ -66,6 +71,11 @@
           1,
           1,
           1,
+          1,
+          1,
+          1,
+          null,
+          null,
           1,
           1,
           1,
@@ -150,7 +160,6 @@
           1,
           null,
           null,
-          1,
           1,
           1,
           1,
@@ -243,6 +252,37 @@
           null
         ]
       },
+      "/Users/jayissuree/Desktop/Makers 2021/week4/bookmark_manager/spec/features/validating_bookmarks_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/jayissuree/Desktop/Makers 2021/week4/bookmark_manager/spec/features/viewing_bookmarks_spec.rb": {
         "lines": [
           1,
@@ -265,6 +305,6 @@
         ]
       }
     },
-    "timestamp": 1616681012
+    "timestamp": 1616684242
   }
 }

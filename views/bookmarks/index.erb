@@ -1,3 +1,5 @@
+<%= flash[:notice] %>
+
 <% @bookmarks.each do |bookmark| %>
     <div>
         <a href=<%= bookmark.href %>><%= bookmark.name %></a>

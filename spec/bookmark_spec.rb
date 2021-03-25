@@ -24,12 +24,17 @@ describe Bookmark do
     describe ".create" do
         
         it "creates a bookmark, saves it to the database and returns a bookmark" do
-            bookmark = Bookmark.create(name: "test", href: "www.testurl.com")
+            bookmark = Bookmark.create(name: "test", href: "https://www.testurl.com")
             persisted_data = persisted_data(id: bookmark.id)
             expect(bookmark.id).to eq(persisted_data["id"])
             expect(bookmark.name).to eq("test")
-            expect(bookmark.href).to eq("www.testurl.com")
+            expect(bookmark.href).to eq("https://www.testurl.com")
             expect(bookmark).to be_a(Bookmark)
+        end
+
+        it "does not create a new bookmark if the URL is not valid" do
+            Bookmark.create(name: 'not a real bookmark', href: 'not a real bookmark')
+            expect(Bookmark.all).to be_empty
         end
 
     end
@@ -37,7 +42,7 @@ describe Bookmark do
     describe ".delete" do
 
         it "deletes the bookmark" do
-            bookmark = Bookmark.create(name: "test", href: "www.testurl.com")
+            bookmark = Bookmark.create(name: "test", href: "https://www.testurl.com")
             expect(Bookmark.all.length).to eq(1)
             expect{ Bookmark.delete(id: bookmark.id) }.to change{ Bookmark.all.length }.from(1).to(0)
         end
@@ -47,7 +52,7 @@ describe Bookmark do
     describe ".find" do
         
         it "finds a and returns a bookmark object from its id" do
-            bookmark = Bookmark.create(name: "test", href: "www.testurl.com")
+            bookmark = Bookmark.create(name: "test", href: "https://www.testurl.com")
             returned_bookmark = Bookmark.find(id: bookmark.id)
             expect(returned_bookmark.id).to eq(bookmark.id)
             expect(returned_bookmark.name).to eq(bookmark.name)
@@ -59,11 +64,16 @@ describe Bookmark do
     describe ".update" do
         
         it "updates the name and href of a bookmark" do
-            bookmark = Bookmark.create(name: "test", href: "www.testurl.com")
-            updated_bookmark = Bookmark.update(id: bookmark.id, name: "updated_test", url: "www.updatedtesturl.com")
+            bookmark = Bookmark.create(name: "test", href: "https://www.testurl.com")
+            updated_bookmark = Bookmark.update(id: bookmark.id, name: "updated_test", url: "https://www.updatedtesturl.com")
             expect(updated_bookmark.id).to eq(bookmark.id)
             expect(updated_bookmark.name).to eq("updated_test")
-            expect(updated_bookmark.href).to eq("www.updatedtesturl.com")
+            expect(updated_bookmark.href).to eq("https://www.updatedtesturl.com")
+        end
+
+        it "does not update a bookmark if the URL is not valid" do
+            bookmark = Bookmark.create(name: "test", href: "https://www.testurl.com")
+            expect(Bookmark.update(id: bookmark.id, name: "updated_test", url: "invalid url")).to be(false)
         end
 
     end

@@ -1,9 +1,13 @@
 require 'sinatra'
+require 'sinatra/flash'
+require 'uri'
 require './lib/bookmark'
 require './database_connection_setup'
 
 class BookmarkManager < Sinatra::Base
 
+    enable :sessions
+    register Sinatra::Flash
     use Rack::MethodOverride
 
     get '/' do
@@ -20,8 +24,8 @@ class BookmarkManager < Sinatra::Base
     end
 
     post '/bookmarks' do
-        Bookmark.create(name: params[:name], href: params[:url])
-        redirect '/'
+        flash[:notice] = "You must submit a valid URL." unless Bookmark.create(name: params[:name], href: params[:url])
+        redirect '/bookmarks'
     end
 
     delete '/bookmarks/:id' do
@@ -35,7 +39,7 @@ class BookmarkManager < Sinatra::Base
     end
 
     patch '/bookmarks/:id' do
-        Bookmark.update(id: params[:id], name: params[:name], url: params[:url])
+        flash[:notice] = "You must submit a valid URL." unless Bookmark.update(id: params[:id], name: params[:name], url: params[:url])
         redirect '/bookmarks'
     end
 

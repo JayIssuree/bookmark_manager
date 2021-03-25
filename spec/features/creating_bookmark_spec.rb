@@ -17,10 +17,9 @@ describe "creating a bookmark", type: :feature do
         visit '/'
         click_button 'Add Bookmark'
         fill_in 'name', with: 'test'
-        fill_in 'url', with: 'www.testurl.com'
+        fill_in 'url', with: 'https://www.testurl.com'
         click_button 'Save Bookmark'
-        click_button 'View Bookmarks'
-        expect(page).to have_link("test", :href => "www.testurl.com")
+        expect(page).to have_link("test", :href => "https://www.testurl.com")
     end
 
 end

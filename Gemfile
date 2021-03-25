@@ -18,4 +18,5 @@ end
 
 group :development, :test do
   gem 'pg'
+  gem 'sinatra-flash'
 end
