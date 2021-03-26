@@ -10,5 +10,11 @@
         <form action="/bookmarks/<%= bookmark.id %>/edit" method=get>
             <input type=submit value="Update Bookmark">
         </form>
+        <% bookmark.get_comments.each do |comment| %>
+            <%= comment.text %>
+        <% end %>
+        <form action="/bookmarks/<%= bookmark.id %>/comments/new">
+            <input type=submit value="Add Comment">
+        </form>
     </div>
 <% end %>

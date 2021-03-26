@@ -23,11 +23,19 @@ This is the basic view of the website. You will build it by working through the 
 
 ### To set up the database
 
-Connect to `psql` and create the `bookmark_manager` database:
+Connect to `psql` and create the `bookmark_manager` and 'bookmark_manager_test' databases:
 
 ```
 CREATE DATABASE bookmark_manager;
 CREATE DATABASE bookmark_manager_test;
 ```
 
-To set up the appropriate tables, connect to the database in `psql` and run the SQL scripts in the `db/migrations` folder in the given order.
+Connect to the databases with:
+
+```
+\c bookmark_manager;
+OR
+\c bookmark_manager_test;
+```
+
+To set up the appropriate tables, connect to the database in `psql` and run the SQL scripts in the `db/migrations` folder in the given order. Repeat for both development and test databases.
