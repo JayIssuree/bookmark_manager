@@ -33,4 +33,16 @@ class Tag
         @content = content
     end
 
+    def bookmarks
+        bookmark_tags.map do |bookmark_tag|
+            Bookmark.find(id: bookmark_tag['bookmark_id'])
+        end
+    end
+
+    private
+
+    def bookmark_tags
+        DatabaseConnection.query("SELECT * FROM bookmark_tags WHERE tag_id = #{self.id}")
+    end
+
 end

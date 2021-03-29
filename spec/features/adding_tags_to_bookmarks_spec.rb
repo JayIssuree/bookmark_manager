@@ -32,4 +32,17 @@ describe "adding tags to bookmarks", type: :feature do
         expect(page).to have_content("Work")
     end
 
+    it "returns the bookmarks of a given tag" do
+        bm1 = Bookmark.create(name: "Google", href: "https://www.google.com")
+        bm2 = Bookmark.create(name: "YouTube", href: "https://www.youtube.com")
+        tag = Tag.create(content: "test tag")
+        BookmarkTag.create(bookmark_id: bm1.id, tag_id: tag.id)
+        BookmarkTag.create(bookmark_id: bm2.id, tag_id: tag.id)
+        visit '/bookmarks'
+        click_button("test tag")
+        expect(page.current_path).to eq("/bookmark_tags/#{tag.id}")
+        expect(page).to have_link("Google", :href => "https://www.google.com")
+        expect(page).to have_link("YouTube", :href => "https://www.youtube.com")
+    end
+
 end

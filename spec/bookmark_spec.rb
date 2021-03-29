@@ -113,11 +113,13 @@ describe Bookmark do
 
     describe '#tags' do
         
-        it 'returns a list of tags for the given bookmark' do
+        it 'returns an array of tags for the given bookmark' do
             bookmark = Bookmark.create(name: "Google", href: "https://www.google.com")
-            tag = Tag.create(content: 'test tag 1')
-            bookmark_tag = BookmarkTag.create(bookmark_id: bookmark.id, tag_id: tag.id)
-            expect(bookmark.tags.length).to eq(1)
+            tag1 = Tag.create(content: 'test tag 1')
+            tag2 = Tag.create(content: 'test tag 2')
+            BookmarkTag.create(bookmark_id: bookmark.id, tag_id: tag1.id)
+            BookmarkTag.create(bookmark_id: bookmark.id, tag_id: tag2.id)
+            expect(bookmark.tags.length).to eq(2)
             expect(bookmark.tags.first.content).to eq("test tag 1")
             expect(bookmark.tags.first).to be_a(Tag)
         end

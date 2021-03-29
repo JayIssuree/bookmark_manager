@@ -33,7 +33,7 @@
 <div>
     <h2> Tags: </h2>
     <% @tags.each do |tag| %>
-        <form>
+        <form action="/bookmark_tags/<%= tag.id %>" method=get>
             <input type=submit value="<%= tag.content %>">
         </form>
     <% end %>

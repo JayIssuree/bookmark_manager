@@ -1,0 +1,10 @@
+<% @bookmarks.each do |bookmark| %>
+    <div>
+        <a href=<%= bookmark.href %>><%= bookmark.name %></a>
+        <ul>
+        <% bookmark.get_comments.each do |comment| %>
+            <li> <%= comment.text %> </li>
+        <% end %>
+        </ul>
+    </div>
+<% end %>

@@ -75,5 +75,10 @@ class BookmarkManager < Sinatra::Base
         redirect '/bookmarks'
     end
 
+    get '/bookmark_tags/:tag_id' do
+        @bookmarks = Tag.find(id: params[:tag_id]).bookmarks
+        erb(:'/bookmark_tags/bookmarks')
+    end
+
     run! if app_file == $0
 end

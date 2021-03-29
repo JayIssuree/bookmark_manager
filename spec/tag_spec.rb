@@ -50,4 +50,20 @@ describe Tag do
 
     end
 
+    describe "#bookmarks" do
+        
+        it "returns an array of bookmarks for a given tag" do
+            bookmark1 = Bookmark.create(name: "Google", href: "https://www.google.com")
+            bookmark2 = Bookmark.create(name: "YouTube", href: "https://www.youtube.com")
+            tag = Tag.create(content: 'test tag 1')
+            BookmarkTag.create(bookmark_id: bookmark1.id, tag_id: tag.id)
+            BookmarkTag.create(bookmark_id: bookmark2.id, tag_id: tag.id)
+            expect(tag.bookmarks.length).to eq(2)
+            expect(tag.bookmarks.first.name).to eq(bookmark1.name)
+            expect(tag.bookmarks[1].href).to eq(bookmark2.href)
+            expect(tag.bookmarks.first).to be_a(Bookmark)
+        end
+
+    end
+
 end
