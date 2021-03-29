@@ -1,0 +1,5 @@
+<% @tags.each do |tag| %>
+    <form action="/bookmark_tags/<%= params[:bookmark_id] %>/<%= tag.id %>" method=post>
+        <input type=submit value="<%= tag.content %>">
+    </form>
+<% end %>
