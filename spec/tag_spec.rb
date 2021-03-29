@@ -28,6 +28,18 @@ describe Tag do
 
     end
 
+    describe ".find" do
+        
+        it "finds and returns the tag given its id" do
+            tag = Tag.create(content: "Example tag 1")
+            found_tag = Tag.find(id: tag.id)
+            expect(found_tag).to be_a(Tag)
+            expect(found_tag.content).to eq(tag.content)
+            expect(found_tag.id).to eq(tag.id)
+        end
+
+    end
+
     describe "#initialize" do
         
         it "is initialized with an id and content" do

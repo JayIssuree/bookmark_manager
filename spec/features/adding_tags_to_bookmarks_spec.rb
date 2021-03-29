@@ -28,7 +28,8 @@ describe "adding tags to bookmarks", type: :feature do
         click_button("Add Tag")
         click_button("Work")
         expect(page.current_path).to eq('/bookmarks')
-        expect(page).to have_content("Tags: Work")
+        expect(page).to have_content("Tags:")
+        expect(page).to have_content("Work")
     end
 
 end

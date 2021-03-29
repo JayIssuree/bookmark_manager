@@ -61,10 +61,20 @@ class Bookmark
         comment_class.all(bookmark_id: self.id)
     end
 
+    def tags
+        bookmark_tags.map do |bookmark_tag| 
+            Tag.find(id: bookmark_tag["tag_id"])
+        end
+    end
+
     private
 
     def self.is_url?(url)
       url =~ /\A#{URI::regexp(['http', 'https'])}\z/
+    end
+
+    def bookmark_tags
+        DatabaseConnection.query("SELECT * FROM bookmark_tags WHERE bookmark_id = #{self.id}")
     end
 
 end

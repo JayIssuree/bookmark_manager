@@ -15,6 +15,12 @@
             <li> <%= comment.text %> </li>
         <% end %>
         </ul>
+        Tags:
+        <ul>
+        <% bookmark.tags.each do |tag| %>
+            <li> <%= tag.content %> </li>
+        <% end %>
+        </ul>
         <form action="/bookmarks/<%= bookmark.id %>/comments/new">
             <input type=submit value="Add Comment">
         </form>

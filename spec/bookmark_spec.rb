@@ -111,4 +111,17 @@ describe Bookmark do
 
     end
 
+    describe '#tags' do
+        
+        it 'returns a list of tags for the given bookmark' do
+            bookmark = Bookmark.create(name: "Google", href: "https://www.google.com")
+            tag = Tag.create(content: 'test tag 1')
+            bookmark_tag = BookmarkTag.create(bookmark_id: bookmark.id, tag_id: tag.id)
+            expect(bookmark.tags.length).to eq(1)
+            expect(bookmark.tags.first.content).to eq("test tag 1")
+            expect(bookmark.tags.first).to be_a(Tag)
+        end
+
+    end
+
 end
