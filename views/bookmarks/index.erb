@@ -20,3 +20,15 @@
         </form>
     </div>
 <% end %>
+
+<div>
+    <h2> Tags: </h2>
+    <% @tags.each do |tag| %>
+        <form>
+            <input type=submit value="<%= tag.content %>">
+        </form>
+    <% end %>
+    <form action='/tags/new' method=get>
+        <input type=submit value="Create New Tag">
+    </form>
+</div>
