@@ -27,7 +27,7 @@ describe Bookmark do
         
         it "creates a bookmark, saves it to the database and returns a bookmark" do
             bookmark = Bookmark.create(name: "test", href: "https://www.testurl.com", comment_class: comment_class)
-            persisted_data = persisted_bookmark_data(id: bookmark.id)
+            persisted_data = persisted_data(table: 'bookmarks', id: bookmark.id)
             expect(bookmark.id).to eq(persisted_data["id"])
             expect(bookmark.name).to eq("test")
             expect(bookmark.href).to eq("https://www.testurl.com")

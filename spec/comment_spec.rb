@@ -1,4 +1,3 @@
-# require 'bookmark'
 require 'database_helpers'
 require 'comment'
 
@@ -30,7 +29,7 @@ describe Comment do
             comment = Comment.create(text: "this is the comment", bookmark_id: bookmark["id"])
             
 
-            persisted_data = persisted_comment_data(id: comment.id)
+            persisted_data = persisted_data(table: 'comments', id: comment.id)
             expect(comment.id).to eq(persisted_data["id"])
             expect(comment.text).to eq("this is the comment")
             expect(comment.bookmark_id).to eq(bookmark["id"])

@@ -125,21 +125,14 @@
           1,
           null,
           1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
+          2,
+          2,
+          2,
           null
         ]
       },
       "/Users/jayissuree/Desktop/Makers 2021/week4/bookmark_manager/spec/comment_spec.rb": {
         "lines": [
-          null,
           1,
           1,
           null,
@@ -427,6 +420,6 @@
         ]
       }
     },
-    "timestamp": 1616778833
+    "timestamp": 1617017449
   }
 }
