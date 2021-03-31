@@ -80,5 +80,9 @@ class BookmarkManager < Sinatra::Base
         erb(:'/bookmark_tags/bookmarks')
     end
 
+    get '/users/new' do
+        erb(:'users/new')
+    end
+
     run! if app_file == $0
 end

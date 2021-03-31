@@ -361,6 +361,29 @@
           null
         ]
       },
+      "/Users/jayissuree/Desktop/Makers 2021/week4/bookmark_manager/spec/features/creating_a_user_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/jayissuree/Desktop/Makers 2021/week4/bookmark_manager/spec/features/creating_bookmark_spec.rb": {
         "lines": [
           1,
@@ -626,6 +649,6 @@
         ]
       }
     },
-    "timestamp": 1617028256
+    "timestamp": 1617203733
   }
 }
