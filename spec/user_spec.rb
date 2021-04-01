@@ -11,7 +11,11 @@ describe User do
             persisted_data = persisted_data(table: 'users', id: user.id)
             expect(user.id).to eq(persisted_data['id'])
             expect(user.email).to eq('test@mail.com')
-            expect(user.password).to eq('password123')
+        end
+
+        it 'hashes the password using BCrypt' do
+            expect(BCrypt::Password).to receive(:create).with('password123')
+            User.create(email: 'email@mail.come', password: 'password123')
         end
         
     end
@@ -23,18 +27,16 @@ describe User do
             found_user = User.find(id: user.id)
             expect(found_user.id).to eq(user.id)
             expect(found_user.email).to eq(user.email)
-            expect(found_user.password).to eq(user.password)
         end
 
     end
 
     describe '#initialize' do
         
-        it 'is initialized with an id and email (and password??)' do
-            user = User.new(id: 1, email: 'test@mail.com', password: 'password123')
+        it 'is initialized with an id and email' do
+            user = User.new(id: 1, email: 'test@mail.com')
             expect(user.id).to eq(1)
             expect(user.email).to eq('test@mail.com')
-            expect(user.password).to eq('password123')
         end
 
     end
