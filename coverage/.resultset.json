@@ -482,6 +482,47 @@
           null
         ]
       },
+      "/Users/jayissuree/Desktop/Makers 2021/week4/bookmark_manager/spec/features/signing_in_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/jayissuree/Desktop/Makers 2021/week4/bookmark_manager/spec/features/updating_bookmark_spec.rb": {
         "lines": [
           1,
@@ -692,6 +733,25 @@
           1,
           null,
           null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
           null,
           null,
           null,
@@ -699,6 +759,6 @@
         ]
       }
     },
-    "timestamp": 1617291881
+    "timestamp": 1617294749
   }
 }

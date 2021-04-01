@@ -20,6 +20,16 @@ class User
         )
     end
 
+    def self.authenticate(email:, password:)
+        result = DatabaseConnection.query("SELECT * FROM users WHERE email = '#{email}'")
+        return nil if result.num_tuples.zero?
+        return unless BCrypt::Password.new(result[0]['password']) == password
+        User.new(
+            id: result[0]['id'],
+            email: result[0]['email']
+        )
+    end
+
     attr_reader :id, :email
 
     def initialize(id:, email:)
