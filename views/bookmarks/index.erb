@@ -1,4 +1,9 @@
 <%= flash[:notice] %>
+<% if @current_user %>
+    <h2>
+        Welcome, <%= @current_user.email %>
+    </h2>
+<% end %>
 
 <% @bookmarks.each do |bookmark| %>
     <div>
