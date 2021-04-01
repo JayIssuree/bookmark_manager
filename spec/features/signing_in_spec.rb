@@ -34,4 +34,14 @@ describe "signing in", type: :feature do
         expect(page).to have_content('Please check your email or password')
     end
 
+    it 'displays a message when signing out' do
+        User.create(email: 'mail@mail.com', password: 'password123')
+        visit '/session/new'
+        fill_in('email', with: 'mail@mail.com')
+        fill_in('password', with: 'password123')
+        click_button('Sign In')
+        click_button('Sign Out')
+        expect(page).to have_content("You have signed out")
+    end
+
 end

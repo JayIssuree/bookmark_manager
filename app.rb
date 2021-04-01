@@ -106,5 +106,11 @@ class BookmarkManager < Sinatra::Base
         end
     end
 
+    delete '/session/destroy' do
+        session.clear
+        flash[:notice] = "You have signed out"
+        redirect '/bookmarks'
+    end
+
     run! if app_file == $0
 end
